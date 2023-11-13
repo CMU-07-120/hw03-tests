@@ -1,6 +1,6 @@
 # Tests (for everyone!)
 
-## In-class Exercise
+## In-class Exercise (paired)
 
 1. Clone this Repo.
 
@@ -52,6 +52,8 @@
 
 6. Repeat 1-4 for 5 more test folders, to use as an extended
    test suite for your buggy code.
+
+7. At the end of class, send us your log of commands and your results file.
 
 ## Commands that will be helpful:
 
