@@ -4,8 +4,7 @@
 
 1. Clone this Repo.
 
-2. Pick at least 6 test folders in this repo to use as your larger
-   test suite on your buggy code from *HW3*.
+2. Pick at least 1 test folder in this repo to test your buggy code against (*HW3*).
 
    * You'll get familiar with running C0 code using paths, for example:
 
@@ -26,6 +25,9 @@
      `favorites.txt` has the right path from where you run things, if a test
      suite relied on it.
 
+     **Definitely review these tests and plan out** how you want to make this
+     work.
+
 3. After you've formed a test suite by choosing and modifying your classmates'
    tests and then running your buggy sorts (1-3) on them, append all of results
    to a single file. For example, if I've compiled my buggy sort1.c0 with
@@ -37,12 +39,19 @@
 
    The `>>` appends to a file (vs `>`).
 
-4. Once you have your results file with all the passes/failures,
+4. Once you have your results file with any passes/failures,
    you can `cat` the file and pipe it into `grep` to list out
    all your failures and use `wc -l` to give us the count.
    Obviously, double-check this file that it's actually
    informative :).
 
+5. It's hard to remember all the commands you've needed
+   for steps 1-4 to work! And, shell histories only last for so long.
+   Please log all of the commands you used that would make
+   this process repeatable so that you can use it in the future.
+
+6. Repeat 1-4 for 5 more test folders, to use as an extended
+   test suite for your buggy code.
 
 ## Commands that will be helpful:
 
