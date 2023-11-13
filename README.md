@@ -34,12 +34,10 @@
    someone's test on sort1, i.e. sort1-test.c0, I can run:
 
    ```sh
-   ./sort1-test  >> results.txt
+   ./sort1-test  &> results.txt
    ```
 
-   The `>>` appends to a file (vs `>`).
-
-4. Once you have your results file with any passes/failures,
+4. Once you have your results file with all the passes/failures,
    you can `cat` the file and pipe it into `grep` to list out
    all your failures and use `wc -l` to give us the count.
    Obviously, double-check this file that it's actually
