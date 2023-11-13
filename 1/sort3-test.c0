@@ -1,0 +1,37 @@
+#use <conio>
+
+int main() {
+  print("All tests passed!\n");
+
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  bundle_t T = read_lines("expect.txt");
+  int l = string_bundle_length(T);
+  string[] sorted = string_bundle_array(T);
+
+  string[] part = alloc_array(string, 1);
+  part[0] = "string";
+
+  
+
+  assert(partition(part, 0,0, 1) == 0);
+
+  string[] test = alloc_array(string,1);
+  test[0] = "one";
+  string[] expected = alloc_array(string,5);
+  expected[0] = "one";
+
+  sort(test,0,1);
+  for(int i=0; i<1; i++) {
+    assert(string_equal(test[i],expected[i]));
+  } 
+
+
+  sort(favs,0,5);
+  for(int i = 0; i < l; i++) {
+     assert(string_equal(favs[i],sorted[i]));
+  }
+  return 0;
+}

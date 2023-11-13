@@ -1,0 +1,6 @@
+#use <conio>
+
+int main() {
+  print("All tests passed!\n");
+  return 0;
+}

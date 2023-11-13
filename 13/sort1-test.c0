@@ -1,0 +1,30 @@
+#use <conio>
+
+int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  // iterate over the pre-sorted array of favorites
+  println("Before:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+  // call the sort fn
+  sort(favs, length);
+
+  // iterate over the sorted array of favorites
+  println("After:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+  assert(string_equal(favs[0],"CAVA"));
+  assert(string_equal(favs[1],"Harry Potter and The Sorcerer's Stone "));
+  assert(string_equal(favs[4],"To Kill a Mockingbird"));
+
+  print("All tests passed!\n");
+  return 0;
+}

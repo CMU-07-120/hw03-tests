@@ -1,0 +1,39 @@
+#use <conio>
+
+int main() {
+  sort1();
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  bundle_t T = read_lines("expect.txt");
+  int l = string_bundle_length(T);
+  string[] sorted = string_bundle_array(T);
+
+  string[] test = alloc_array(string,1);
+  test[0] = "one";
+  string[] expected = alloc_array(string,5);
+  expected[0] = "one";
+
+  sort(test,0);
+  for(int i=0; i<1; i++) {
+    assert(string_equal(test[i],expected[i]));
+  } 
+
+  string[] s = alloc_array(string,2);
+  s[0] = "0";
+  s[1] = "1";
+
+  swap(s,0,1);
+
+  assert(string_equal(s[0],"1") && string_equal(s[1],"0"));
+
+  sort(favs,5);
+
+  for(int i = 0; i < l; i++) {
+    assert(string_equal(favs[i],sorted[i]));
+  }
+
+  return 0;
+
+}

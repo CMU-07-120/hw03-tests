@@ -1,0 +1,34 @@
+#use <conio>
+#use <string>
+
+int main1() {
+  string[] test1 = alloc_array(string, 5); //works
+  test1[0] = "wrong"; test1[1] = "meow"; test1[2] = "cat"; test1[3] = "dog"; test1[4] = "apple";
+  string[] res1 = alloc_array(string, 5);
+  res1[0] = "apple"; res1[1] = "cat"; res1[2] = "dog"; res1[3] = "meow"; res1[4] = "wrong";
+  sort(test1, 5);
+  for (int i = 0; i < 5; i++){
+    assert(string_equal(test1[i], res1[i]));
+  }
+
+  string[] test2 = alloc_array(string, 6); // works
+  test2[0] = "absla"; test2[1] = "wthwd"; test2[2] = "sgioioz"; test2[3] = "fakj"; test2[4] = "zwadsf"; test2[5] = "zzsd";
+  string[] res2 = alloc_array(string, 6);
+  res2[0] = "absla"; res2[1] = "fakj"; res2[2] = "sgioioz"; res2[3] = "wthwd"; res2[4] = "zwadsf"; res2[5] = "zzsd";
+  sort(test2, 6);
+  for (int i = 0; i < 6; i++){
+    assert(string_equal(test2[i], res2[i]));
+  }
+
+  string[] test3 = alloc_array(string, 6); // buggy
+  test3[0] = "wrong"; test3[1] = "meow"; test3[2] = "cat"; test3[3] = "dog"; test3[4] = "heat"; test3[5] = "smile";
+  string[] res3 = alloc_array(string, 6);
+  res3[0] = "cat"; res3[1] = "dog"; res3[2] = "heat"; res3[3] = "meow"; res3[4] = "smile"; res3[5] = "wrong";
+  sort(test3, 6);
+  for (int i = 0; i < 6; i++){
+    assert(string_equal(test3[i], res3[i]));
+  }
+
+
+  return 0;
+}
