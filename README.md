@@ -36,6 +36,11 @@
    ```sh
    ./sort1-test  &> results.txt
    ```
+   or
+
+   ```sh
+   ./sort1-test  >> results.txt
+   ```
 
 4. Once you have your results file with all the passes/failures,
    you can `cat` the file and pipe it into `grep` to list out
