@@ -1,0 +1,24 @@
+#use <conio>
+ 
+void test_sort2(){
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  sort(favs, 0, length);
+
+  assert(string_compare(favs[2], "Exo") == 0);
+  assert(string_compare(favs[0], "Barbie") == 0);
+  assert(string_compare(favs[5], "Phineas and Ferb") == 0);
+  
+  assert(string_compare(favs[3], "Kidz Bop Dance Party!") == 0);
+  assert(string_compare(favs[1], "Exo") < 0);
+  assert(!(string_equal(favs[4], favs[5])));
+}
+
+int main() {
+  test_sort2();
+
+  print("All tests passed!\n");
+  return 0;
+}

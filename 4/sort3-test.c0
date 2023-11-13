@@ -1,0 +1,37 @@
+#use <conio>
+
+int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+  sort(favs, 0, 5);
+  assert(string_compare(favs[0], "avatar") == 0);
+  assert(string_compare(favs[1], "breakfast club") == 0);
+  assert(string_compare(favs[2], "dear insanity...") == 0);
+  assert(string_compare(favs[3], "reborn") == 0);
+  assert(string_compare(favs[4], "seventeen") == 0);
+
+  string[] array3 = alloc_array(string, 3);
+  array3[0] = "avatar";
+  array3[1] = "breakfast club";
+  array3[2] = "dear insanity...";
+  sort(array3, 0, 3);
+  assert(string_compare(array3[0], "avatar") == 0);
+  assert(string_compare(array3[1], "breakfast club") == 0);
+  assert(string_compare(array3[2], "dear insanity...") == 0);
+
+  string[] array1 = alloc_array(string, 4);
+  array1[0] = "breakfast club";
+  array1[1] = "avatar";
+  array1[2] = "dear insanity...";
+  array1[3] = "breakfast club";
+  sort(array1, 0, 4);
+  //This test case will fail
+  assert(string_compare(array1[0], "avatar") == 0);
+  assert(string_compare(array1[1], "breakfast club") == 0);
+  assert(string_compare(array1[2], "breakfast club") == 0);
+  assert(string_compare(array1[3], "dear insanity...") == 0);
+
+  print("All tests passed!\n");
+  return 0;
+}

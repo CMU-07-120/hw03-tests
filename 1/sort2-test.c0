@@ -1,0 +1,47 @@
+#use <conio>
+
+int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  bundle_t T = read_lines("expect.txt");
+  int l = string_bundle_length(T);
+  string[] sorted = string_bundle_array(T);
+
+  bundle_t Q = read_lines("sort2.txt");
+  int L = string_bundle_length(Q);
+  string[] merge = string_bundle_array(Q);
+
+  m(merge,0,3,6);
+
+  string[] correct_merged = alloc_array(string, 6);
+  correct_merged[0] = "a";
+  correct_merged[1] = "b";
+  correct_merged[2] = "c";
+  correct_merged[3] = "x";
+  correct_merged[4] = "y";
+  correct_merged[5] = "z";
+
+  for (int i = 0; i < 6; i++) {
+    assert(string_equal(correct_merged[i],merge[i]));
+  }
+
+  string[] test = alloc_array(string,1);
+  test[0] = "one";
+  string[] expected = alloc_array(string,5);
+  expected[0] = "one";
+
+  sort(test,0,1);
+  for(int i=0; i<1; i++) {
+    assert(string_equal(test[i],expected[i]));
+  } 
+
+  
+  sort(favs,0,5);
+  for(int i = 0; i < l; i++) {
+     assert(string_equal(favs[i],sorted[i]));
+  }
+
+  return 0;
+}

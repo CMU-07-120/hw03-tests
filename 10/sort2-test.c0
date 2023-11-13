@@ -1,0 +1,48 @@
+#use <conio>
+
+int main() {
+
+  //Should Pass Checking No Money at End
+  string[] test1 = alloc_array(string, 5);
+  test1[0] = "Mom";
+  test1[1] = "Federer";
+  test1[2] = "Pizza";
+  test1[3] = "Chelsea";
+  test1[4] = "Steelers";
+  
+  sort(test1, 0, 5);
+  assert(string_equal(test1[0],"Chelsea"));
+  assert(string_equal(test1[1], "Federer"));
+  assert(string_equal(test1[2],"Mom"));
+  assert(string_equal(test1[3],"Pizza"));
+  assert(string_equal(test1[4], "Steelers"));
+
+  //Should Pass Checking Swap
+
+  bundle_t S1 = read_lines("favorites.txt");
+  int length1 = string_bundle_length(S1);
+  string[] favs2 = string_bundle_array(S1);
+
+  sort(favs2, 0, 2);
+  assert(string_equal(favs2[0],"Federer"));
+  assert(string_equal(favs2[1], "Mom"));
+
+  //Should Not Pass Checking Money at End
+
+  bundle_t S2 = read_lines("favorites.txt");
+  int length2 = string_bundle_length(S2);
+  string[] favs = string_bundle_array(S2);
+  
+  sort(favs, 0, length2);
+  assert(string_equal(test1[0],"Chelsea"));
+  assert(string_equal(test1[1],"Federer"));
+  assert(string_equal(test1[2], "Mom"));
+  assert(string_equal(test1[3], "Money"));
+  assert(string_equal(test1[4], "Pizza"));
+  assert(string_equal(test1[5],"Steelers"));
+
+
+
+  print("All tests passed!\n");
+  return 0;
+}

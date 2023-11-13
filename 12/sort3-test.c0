@@ -1,0 +1,28 @@
+#use <conio>
+
+int main() {
+  string[] strings1 = alloc_array(string, 10);
+  string[] sorted1 = alloc_array(string, 10);
+  strings1[0] = "a"; strings1[1] = "b"; strings1[2] = "d"; strings1[3] = "e";
+  strings1[4] = "h"; strings1[5] = "f"; strings1[6] = "j"; strings1[7] = "i";
+  strings1[8] = "g"; strings1[9] = "c";
+  sorted1[0] = "a"; sorted1[1] = "b"; sorted1[2] = "c"; sorted1[3] = "d";
+  sorted1[4] = "e"; sorted1[5] = "f"; sorted1[6] = "g"; sorted1[7] = "h";
+  sorted1[8] = "i"; sorted1[9] = "j";
+
+  sort(strings1,0,  10);
+
+  assert(string_equal(strings1[0], sorted1[0]));
+  assert(string_equal(strings1[1], sorted1[1])); 
+  assert(string_equal(strings1[2], sorted1[2])); 
+  assert(string_equal(strings1[3], sorted1[3])); 
+  assert(string_equal(strings1[4], sorted1[4])); 
+  assert(string_equal(strings1[5], sorted1[5])); 
+  assert(string_equal(strings1[6], sorted1[6])); 
+  assert(string_equal(strings1[7], sorted1[7])); 
+  assert(string_equal(strings1[8], sorted1[8])); 
+  assert(string_equal(strings1[9], sorted1[9]));  
+
+  print("All tests passed!\n");
+  return 0;
+}

@@ -1,0 +1,31 @@
+#use <conio>
+
+int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+  string[] answer = alloc_array(string,5);
+  answer[0] = "Avicii"; 
+  answer[1] = "Fight Club";
+  answer[2] = "Interstellar";
+  answer[3] = "Led Zeppelin";
+  answer[4] = "Pizza";
+  sort(favs,0,length);
+  for(int i =0;i<length;i++) {
+    if(!string_equal(answer[i],favs[i])) print("test failed");
+  }
+  bundle_t H1 = read_lines("happy.txt");
+  int lenH1 = string_bundle_length(H1);
+  string[] happy = string_bundle_array(H1);
+  string[] ans = string_bundle_array(H1);
+  sort(happy,0,lenH1);
+  for(int i = 0;i<lenH1;i++) {
+    assert(string_equal(happy[i],ans[i]));
+  }
+  string[] one = alloc_array(string,1);
+  int lenOne = 1;
+  one[0] = "onevalue";
+  sort(one,0,lenOne);
+  assert(string_equal(one[0],"onevalue"));
+  return 0;
+}

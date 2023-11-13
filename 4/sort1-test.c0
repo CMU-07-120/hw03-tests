@@ -1,0 +1,37 @@
+#use <conio>
+
+int main() {
+
+  string[] array2 = alloc_array(string, 3);
+  array2[0] = "breakfast club";
+  array2[1] = "breakfast club";
+  array2[2] = "breakfast club";
+  sort(array2, 3);
+  assert(string_compare(array2[0], "breakfast club") == 0);
+  assert(string_compare(array2[1], "breakfast club") == 0);
+  assert(string_compare(array2[2], "breakfast club") == 0);
+
+  string[] array3 = alloc_array(string, 3);
+  array3[0] = "avatar";
+  array3[1] = "breakfast club";
+  array3[2] = "dear insanity...";
+  sort(array3, 3);
+  assert(string_compare(array3[0], "avatar") == 0);
+  assert(string_compare(array3[1], "breakfast club") == 0);
+  assert(string_compare(array3[2], "dear insanity...") == 0);
+
+//This test case will fail
+  string[] array1 = alloc_array(string, 4);
+  array1[0] = "breakfast club";
+  array1[1] = "avatar";
+  array1[2] = "dear insanity...";
+  array1[3] = "breakfast club";
+  sort(array1, 4);
+  assert(string_compare(array1[0], "avatar") == 0);
+  assert(string_compare(array1[1], "breakfast club") == 0);
+  assert(string_compare(array1[2], "breakfast club") == 0);
+  assert(string_compare(array1[3], "dear insanity...") == 0);
+
+  print("All tests passed!\n");
+  return 0;
+}
