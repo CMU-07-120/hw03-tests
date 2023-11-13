@@ -1,6 +1,62 @@
 #use <conio>
+#use <string>
+
+bool array_equal(string[] array1, string[] array2, int n){
+  for (int i=0; i < n; i++){
+    //if strings do not equal return false
+    if(string_compare(array1[i], array2[i]) != 0)
+    {
+      return false;
+    } 
+  }
+  return true;
+}
 
 int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  string[] sorted_favs = alloc_array(string, 5);
+  sorted_favs[0] = "Brenton Wood ";
+  sorted_favs[1] = "Good Will Hunting ";
+  sorted_favs[2] = "Hasta La Raiz ";
+  sorted_favs[3] = "Nevermoor: The Trials of Morrigan Crow ";
+  sorted_favs[4] = "Papa Bear & His Cubs ";
+
+  string[] favs2 = alloc_array(string, 3);
+  favs2[0] = "Strawberries";
+  favs2[1] = "Blueberries";
+  favs2[2] = "Watermellon";
+
+  string[] sorted_favs2 = alloc_array(string, 3);
+  sorted_favs2[0] = "Blueberries";
+  sorted_favs2[1] = "Strawberries";
+  sorted_favs2[2] = "Watermellon";
+
+  string[] favs3 = alloc_array(string, 5);
+  favs3[0] = "Pennyslvania";
+  favs3[1] = "California";
+  favs3[2] = "Seatle";
+  favs3[3] = "Arizona";
+  favs3[4] = "Texas";
+
+  string[] sorted_favs3 = alloc_array(string, 5);
+  sorted_favs3[0] = "Arizona";
+  sorted_favs3[1] = "California";
+  sorted_favs3[2] = "Pennyslvania";
+  sorted_favs3[3] = "Seatle";
+  sorted_favs3[4] = "Texas";
+
+  sort(favs, 0, 5);
+  sort(favs2, 0, 3);
+  sort(favs3, 0, 2);
+
+  assert(array_equal(favs, sorted_favs, length));
+  assert(array_equal(favs2, sorted_favs2, 3));
+  assert(array_equal(favs3, sorted_favs3, 5));
+  //actually two sad test 
+  
   print("All tests passed!\n");
   return 0;
 }

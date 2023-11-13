@@ -1,0 +1,48 @@
+#use <conio>
+#use <string>
+
+
+void test_sort_simple_case() {
+  string[] favs = alloc_array(string, 3);
+  favs[0] = "Banana";
+  favs[1] = "Apple";
+  favs[2] = "Cherry";
+  sort2(favs, 0, 3);
+  assert(string_compare(favs[0], "Apple") == 0);
+  assert(string_compare(favs[1], "Banana") == 0);
+  assert(string_compare(favs[2], "Cherry") == 0);
+}
+
+void test_merge_function() {
+  string[] favs = alloc_array(string, 4);
+  favs[0] = "Apple";
+  favs[1] = "Cherry";
+  favs[2] = "Banana";
+  favs[3] = "Orange";
+  m(favs, 0, 2, 4);
+  assert(string_compare(favs[0], "Apple") == 0);
+  assert(string_compare(favs[1], "Banana") == 0);
+  assert(string_compare(favs[2], "Cherry") == 0);
+  assert(string_compare(favs[3], "Orange") == 0);
+}
+
+void test_sort_with_equal_elements() {
+  string[] favs = alloc_array(string, 4);
+  favs[0] = "Apple";
+  favs[1] = "Banana";
+  favs[2] = "Banana";
+  favs[3] = "Apple";
+  sort2(favs, 0, 4);
+  assert(string_compare(favs[0], "Apple") == 0);
+  // This assertion should fail because of the bug introduced
+  assert(string_compare(favs[1], "Apple") == 0);
+  assert(string_compare(favs[2], "Banana") == 0);
+  assert(string_compare(favs[3], "Banana") == 0);
+}
+
+int main2() {
+  test_sort_simple_case(); // Should pass
+  test_merge_function();   // Should pass
+  test_sort_with_equal_elements(); // Should fail due to the bug
+  return 0;
+}

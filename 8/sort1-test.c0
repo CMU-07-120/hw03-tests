@@ -1,0 +1,45 @@
+#use <conio>
+#use <string>
+
+void test_sort_already_sorted() {
+  string[] favs = alloc_array(string, 3);
+  favs[0] = "Apple";
+  favs[1] = "Banana";
+  favs[2] = "Cherry";
+  sort1(favs, 3);
+  assert(string_compare(favs[0], "Apple") == 0);
+  assert(string_compare(favs[1], "Banana") == 0);
+  assert(string_compare(favs[2], "Cherry") == 0);
+}
+
+void test_sort_identical_elements() {
+  string[] favs = alloc_array(string, 3);
+  favs[0] = "Apple";
+  favs[1] = "Apple";
+  favs[2] = "Apple";
+  sort1(favs, 3);
+  assert(string_compare(favs[0], "Apple") == 0);
+  assert(string_compare(favs[1], "Apple") == 0);
+  assert(string_compare(favs[2], "Apple") == 0);
+}
+
+void test_sort_fail_case() {
+  string[] favs = alloc_array(string, 4);
+  favs[0] = "Banana";
+  favs[1] = "Apple";
+  favs[2] = "Cherry";
+  favs[3] = "Banana"; // This is the edge case that triggers the bug
+  sort1(favs, 4);
+  // This assertion should pass if there were no bug
+  assert(string_compare(favs[1], "Banana") == 0);
+  // This assertion is expected to fail because of the introduced bug
+  assert(string_compare(favs[2], "Cherry") == 0);
+  assert(string_compare(favs[3], "Banana") == 0);
+}
+
+int main1() {
+  test_sort_already_sorted();    // Should pass
+  test_sort_identical_elements(); // Should pass
+  test_sort_fail_case();          // Should fail due to the bug
+  return 0;
+}
