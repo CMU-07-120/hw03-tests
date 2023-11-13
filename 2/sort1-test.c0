@@ -1,6 +1,54 @@
 #use <conio>
+#use <string>
+
+bool array_equal(string[] array1, string[] array2, int n){
+  for (int i=0; i < n; i++){
+    //if strings do not equal return false
+    if(string_compare(array1[i], array2[i]) != 0)
+    {
+      return false;
+    } 
+  }
+  return true;
+}
 
 int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  string[] sorted_favs = alloc_array(string, 5);
+  sorted_favs[0] = "Brenton Wood ";
+  sorted_favs[1] = "Good Will Hunting ";
+  sorted_favs[2] = "Hasta La Raiz ";
+  sorted_favs[3] = "Nevermoor: The Trials of Morrigan Crow ";
+  sorted_favs[4] = "Papa Bear & His Cubs ";
+
+  string[] S1 = alloc_array(string, 2);
+  S1[0] = "apples";
+  S1[1] = "bananas";
+
+  string[] swapped_S1 = alloc_array(string, 2);
+  swapped_S1[0] = "bananas";
+  swapped_S1[1] = "apples";
+
+  string[] S2 = alloc_array(string, 2);
+  S2[0] = "Hunt";
+  S2[1] = "Sorrels";
+
+  string[] swapped_S2 = alloc_array(string, 2);
+  swapped_S2[0] = "Sorrels";
+  swapped_S2[1] = "Hunt";
+
+  swap(S1, 0, 1);
+  swap(S2, 0, 1);
+  sort(favs, length);
+
+  assert(array_equal(S1, swapped_S1, 2));
+  assert(array_equal(S2, swapped_S2, 2));
+  assert(array_equal(favs, sorted_favs, length));
+
+
   print("All tests passed!\n");
   return 0;
 }

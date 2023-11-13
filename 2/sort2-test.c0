@@ -1,6 +1,69 @@
 #use <conio>
+#use <string>
+
+bool array_equal(string[] array1, string[] array2, int n){
+  for (int i=0; i < n; i++){
+    //if strings do not equal return false
+    if(string_compare(array1[i], array2[i]) != 0)
+    {
+      return false;
+    } 
+  }
+  return true;
+}
 
 int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  string[] sorted_favs = alloc_array(string, 5);
+  sorted_favs[0] = "Brenton Wood ";
+  sorted_favs[1] = "Good Will Hunting ";
+  sorted_favs[2] = "Hasta La Raiz ";
+  sorted_favs[3] = "Nevermoor: The Trials of Morrigan Crow ";
+  sorted_favs[4] = "Papa Bear & His Cubs ";
+
+  sort(favs, 0, length);
+
+  string[] m1 = alloc_array(string, 4);
+  m1[0] = "cows";
+  m1[1] = "dogs";
+  m1[2] = "cats";
+  m1[3] = "dinosaurs";
+
+  string[] merged_m1 = alloc_array(string, 4);
+  merged_m1[0] = "cats";
+  merged_m1[1] = "cows";
+  merged_m1[2] = "dinosaurs";
+  merged_m1[3] = "dogs";
+  
+
+  string[] m2 = alloc_array(string, 3);
+  m2[0] = "porter";
+  m2[1] = "posner";
+  m2[2] = "doherty";
+
+  string[] merged_m2 = alloc_array(string, 3);
+  merged_m2[0] = "doherty";
+  merged_m2[1] = "porter";
+  merged_m2[2] = "posner";
+
+  m(m1, 0, 2, 4);
+  m(m2, 0, 2, 3);
+
+  assert(array_equal(m1, merged_m1, 4));
+  assert(array_equal(m2, merged_m2, 3));
+
+  println("After:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+
+  assert(array_equal(favs, sorted_favs, length));
+
   print("All tests passed!\n");
   return 0;
 }

@@ -1,6 +1,16 @@
 #use <conio>
 
 int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  // call the sort fn
+  sort(favs, 0, length);
+
+  assert(string_compare(favs[0], favs[1]) <= 0);
+  assert(string_compare(favs[2], favs[3]) <= 0);
+  assert(string_compare(favs[4], favs[5]) <= 0);
   print("All tests passed!\n");
   return 0;
 }

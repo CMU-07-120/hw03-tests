@@ -1,0 +1,47 @@
+#use <conio>
+
+// Assume the necessary swap, partition, and sort functions are defined or imported here
+
+void test_sort_already_sorted() {
+  string[] favs = alloc_array(string, 3);
+  favs[0] = "Apple";
+  favs[1] = "Banana";
+  favs[2] = "Cherry";
+  sort3(favs, 0, 3);
+  assert(string_compare(favs[0], "Apple") == 0);
+  assert(string_compare(favs[1], "Banana") == 0);
+  assert(string_compare(favs[2], "Cherry") == 0);
+}
+
+void test_sort_identical_elements() {
+  string[] favs = alloc_array(string, 3);
+  favs[0] = "Apple";
+  favs[1] = "Apple";
+  favs[2] = "Apple";
+  sort3(favs, 0, 3);
+  assert(string_compare(favs[0], "Apple") == 0);
+  assert(string_compare(favs[1], "Apple") == 0);
+  assert(string_compare(favs[2], "Apple") == 0);
+}
+
+void test_sort_fail_case() {
+  string[] favs = alloc_array(string, 4);
+  favs[0] = "Banana";
+  favs[1] = "Apple";
+  favs[2] = "Cherry";
+  favs[3] = "Apple"; // This may cause an issue with our introduced bug
+  sort3(favs, 0, 4);
+  // These assertions should pass if the sorting was correct
+  assert(string_compare(favs[0], "Apple") == 0 || string_compare(favs[0], "Banana") == 0); // Depending on the pivot bug, "Apple" may be out of place
+  // This assertion is expected to fail because of the introduced bug
+  assert(string_compare(favs[1], "Banana") == 0);
+  assert(string_compare(favs[2], "Cherry") == 0);
+}
+
+int main3() {
+  test_sort_already_sorted();     // Should pass
+  test_sort_identical_elements(); // Should pass
+  test_sort_fail_case();          // Should fail due to the bug
+  print("All tests passed!\n");
+  return 0;
+}
